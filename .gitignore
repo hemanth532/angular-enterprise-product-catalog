@@ -1,0 +1,53 @@
+# Node dependency directory
+node_modules/
+
+# Build output
+/dist/
+/out-tsc/
+
+# Angular CLI generated files
+/.angular/
+
+# Compiled output
+*.js
+*.js.map
+*.d.ts
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Environment files
+.env
+.env.*
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*~
+
+# Coverage reports
+coverage/
+
+# Mac files
+.AppleDouble
+.LSOverride
+
+# Optional npm cache
+.npm/
+
+# Lock files (if you want to ignore specific lock file variants)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml

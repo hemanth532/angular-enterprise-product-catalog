@@ -1,0 +1,11 @@
+.app-shell {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}

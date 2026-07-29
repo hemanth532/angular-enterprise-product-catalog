@@ -1,0 +1,46 @@
+<div class="product-list-shell">
+  <div class="product-list-header">
+    <h2>Latest Products</h2>
+    <button mat-flat-button color="primary" (click)="refreshProducts()">Refresh</button>
+  </div>
+
+  <div class="search-field">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Search products</mat-label>
+      <input
+        matInput
+        type="search"
+        placeholder="Enter product name"
+        [value]="searchTerm()"
+        (input)="searchTerm.set($any($event.target).value)"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="status" *ngIf="productService.loading()">
+    <mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
+    <span>Loading products…</span>
+  </div>
+
+  <div class="status error" *ngIf="!productService.loading() && productService.error()">
+    <p>{{ productService.error() }}</p>
+    <button mat-stroked-button color="warn" (click)="refreshProducts()">Retry</button>
+  </div>
+
+  <div *ngIf="!productService.loading() && !productService.error()">
+    <mat-card *ngFor="let product of filteredProducts(); trackBy: trackById" class="product-card">
+      <div class="product-grid">
+        <img [src]="product.image" [alt]="product.title" />
+        <div>
+          <h3>{{ product.title }}</h3>
+          <p class="category">{{ product.category }}</p>
+          <p>{{ product.description }}</p>
+          <p class="price">{{ product.price | currency:'USD':'symbol':'1.2-2' }}</p>
+        </div>
+      </div>
+    </mat-card>
+    <div class="status" *ngIf="filteredProducts().length === 0">
+      <p>No products match your search.</p>
+    </div>
+  </div>
+</div>
