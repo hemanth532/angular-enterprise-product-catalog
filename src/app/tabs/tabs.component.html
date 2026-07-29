@@ -1,0 +1,11 @@
+<mat-tab-group
+  [selectedIndex]="selectedIndex()"
+  (selectedIndexChange)="navigateToTab($event)"
+>
+  <mat-tab label="Products"></mat-tab>
+  <mat-tab label="Registration"></mat-tab>
+</mat-tab-group>
+
+<div class="tab-content">
+  <router-outlet></router-outlet>
+</div>

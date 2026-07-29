@@ -1,7 +1,11 @@
 <mat-toolbar color="primary">
   <span>{{ title() }}</span>
+  <span class="spacer"></span>
+  <button mat-button (click)="themeService.toggleTheme()">
+    Theme: {{ themeService.activeTheme() | titlecase }}
+  </button>
 </mat-toolbar>
 
 <div class="app-shell">
-  <app-product-list></app-product-list>
+  <router-outlet></router-outlet>
 </div>

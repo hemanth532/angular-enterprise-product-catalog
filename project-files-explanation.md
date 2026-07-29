@@ -81,14 +81,14 @@ This document explains each file in the project and key Angular concepts.
 
 ### `src/app/app.component.ts`
 - Root component class.
-- Standalone component that imports `MatToolbarModule` and `ProductListComponent`.
+- Standalone component that imports `MatToolbarModule`, `MatButtonModule`, `RouterModule`, and `TitleCasePipe`.
 - Uses Angular Signals: `signal('...')` to hold reactive state.
-- Template binds to `title()` so changes are reflected automatically.
+- Provides a theme toggle button and renders the route outlet for lazy-loaded child modules.
 
 ### `src/app/app.component.html`
 - Root component template.
-- Contains `<mat-toolbar>` and `<app-product-list>`.
-- Shows how component composition works in Angular.
+- Contains `<mat-toolbar>` with the app title and theme toggle button.
+- Renders lazy-loaded child views using `<router-outlet>`.
 
 ### `src/app/app.component.scss`
 - Styles for the root component.
@@ -97,6 +97,11 @@ This document explains each file in the project and key Angular concepts.
 ### `src/app/models/product.model.ts`
 - Defines the `Product` TypeScript interface.
 - Ensures API data structures are typed consistently.
+
+### `src/app/services/theme.service.ts`
+- Angular service for managing the active theme.
+- Uses Signals to store the active theme and computed classes.
+- Applies a `material-theme` or `custom-theme` root class based on environment and runtime toggle.
 
 ### `src/app/services/product.service.ts`
 - Angular service for fetching product data.
@@ -113,6 +118,19 @@ This document explains each file in the project and key Angular concepts.
 - `trackById()` helps Angular render lists efficiently.
 - `refreshProducts()` reloads the API data.
 
+### `src/app/components/product-list/product-list.module.ts`
+- Lazy-loaded feature module for the product list route.
+- Declares route configuration to render `ProductListComponent` at the product path.
+
+### `src/app/tabs/tabs.component.ts`
+- Standalone component that renders Angular Material tabs.
+- Uses router navigation to switch between product and registration child routes.
+- Keeps selection state in a signal and updates it from router events.
+
+### `src/app/tabs/tabs.module.ts`
+- Lazy-loaded tabs module that defines child routes.
+- Hosts `ProductListModule` and `RegistrationModule` as nested lazy-loaded routes.
+
 ### `src/app/components/product-list/product-list.component.html`
 - Component view markup.
 - Includes a search input to filter products by name.
@@ -125,6 +143,23 @@ This document explains each file in the project and key Angular concepts.
 - Component-specific layout and style rules.
 - Uses responsive grid for product cards.
 - Keeps styling scoped to the component.
+
+### `src/app/registration/registration.component.ts`
+- Standalone registration form component with reactive form validation.
+- Uses Angular Material form fields and buttons.
+- Validates full name, email, password length, and password match.
+
+### `src/app/registration/registration.component.html`
+- Registration form template with Material input fields and validation messages.
+- Displays errors only after submit to guide the user.
+
+### `src/app/registration/registration.component.scss`
+- Styles the registration card and form layout.
+- Ensures responsive spacing for input fields and submit button.
+
+### `src/app/registration/registration.module.ts`
+- Lazy-loaded module for the registration route.
+- Declares the route configuration to render `RegistrationComponent` at the registration path.
 
 ## Test files
 

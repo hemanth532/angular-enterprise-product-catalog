@@ -21,7 +21,7 @@
     "noFallthroughCasesInSwitch": true,
     "useDefineForClassFields": true,
     "resolveJsonModule": true,
-    "types": ["node"]
+    "types": ["node", "jasmine"]
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
