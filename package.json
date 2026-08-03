@@ -5,8 +5,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve enterprise-product-catalog --configuration development",
+    "start:mf": "ng serve enterprise-product-catalog --configuration development --extra-webpack-config webpack.config.js",
     "start:prod": "npx http-server ./dist/enterprise-product-catalog -p 8080 --silent",
     "build": "ng build enterprise-product-catalog --configuration production",
+    "build:mf": "ng build enterprise-product-catalog --configuration production --extra-webpack-config webpack.config.js",
     "build:prod": "ng build enterprise-product-catalog --configuration production",
     "test": "ng test enterprise-product-catalog --watch=false",
     "lint": "ng lint enterprise-product-catalog",
@@ -26,8 +28,23 @@
     "@angular/router": "^22.0.0",
     "rxjs": "^7.8.0",
     "tslib": "^2.6.0",
-    "zone.js": "^0.15.0"
+    "zone.js": "^0.15.0",
+    "@angular-architects/module-federation": "^15.0.0",
+    "ngx-build-plus": "^15.0.0",
+    "@opentelemetry/api": "^1.5.0",
+    "@opentelemetry/sdk-trace-web": "^1.9.0",
+    "@opentelemetry/instrumentation-fetch": "^0.34.0",
+    "@opentelemetry/instrumentation-document-load": "^0.34.0",
+    "@opentelemetry/sdk-metrics": "^1.9.0",
+    
+    "ngx-logger": "^5.0.0"
+    ,
+    "path-browserify": "^1.0.1"
   },
+  "browser": {
+    "path": false
+  },
+  "optionalDependencies": {},
   "devDependencies": {
     "@angular-devkit/build-angular": "^22.0.8",
     "@angular/cli": "^22.0.8",

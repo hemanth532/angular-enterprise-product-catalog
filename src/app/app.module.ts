@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 import { AppComponent } from './app.component';
 import { ProductService } from './services/product.service';
+import { LoggingService } from './services/logging.service';
 
 const routes: Routes = [
   {
@@ -22,8 +24,13 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     AppComponent,
+    LoggerModule.forRoot({
+      level: NgxLoggerLevel.DEBUG,
+      serverLoggingUrl: '/api/logs',
+      serverLogLevel: NgxLoggerLevel.ERROR
+    })
   ],
-  providers: [ProductService],
+  providers: [ProductService, LoggingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

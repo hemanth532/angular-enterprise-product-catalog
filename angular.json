@@ -11,7 +11,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/enterprise-product-catalog",
             "index": "src/index.html",
@@ -20,7 +20,8 @@
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "webpack.config.js"
           },
           "configurations": {
             "development": {
@@ -46,16 +47,16 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "buildTarget": "enterprise-product-catalog:build"
+            "browserTarget": "enterprise-product-catalog:build:development"
           },
           "configurations": {
             "development": {
-              "buildTarget": "enterprise-product-catalog:build:development"
+              "browserTarget": "enterprise-product-catalog:build:development"
             },
             "production": {
-              "buildTarget": "enterprise-product-catalog:build:production"
+              "browserTarget": "enterprise-product-catalog:build:production"
             }
           }
         },
